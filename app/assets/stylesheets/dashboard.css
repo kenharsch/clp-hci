@@ -5,9 +5,13 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+
 }
 
 
+body {
+    background-color: #FFF !important;
+}
 /*
  * Global add-ons
  */
@@ -23,6 +27,7 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
+  background-color: #FFF;
 }
 
 /*
@@ -36,7 +41,7 @@ body {
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
-    top: 50px;
+    top: 200px;
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -44,8 +49,11 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+
     background-color: #E5C062;
+    background: transparent;
     border-right: 1px solid #eee;
+    border: none;
   }
 }
 
