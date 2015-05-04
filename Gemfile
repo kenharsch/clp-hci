@@ -4,6 +4,10 @@ gem 'ahoy_matey'
 
 gem 'activeuuid', '>= 0.5.0'
 
+gem 'pg'
+
+gem 'mysql2'
+
 gem 'ranked-model'
 #Devise user authentication
 gem 'devise'
