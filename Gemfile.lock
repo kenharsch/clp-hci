@@ -119,6 +119,8 @@ GEM
     orm_adapter (0.5.0)
     pg (0.18.1)
     posix-spawn (0.3.11)
+    puma (2.11.2)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -212,6 +214,7 @@ DEPENDENCIES
   jquery-ui-rails
   mysql2
   pg
+  puma
   rails (= 4.1.6)
   ranked-model
   sass-rails (~> 4.0.3)

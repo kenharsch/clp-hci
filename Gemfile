@@ -8,6 +8,8 @@ gem 'pg'
 
 gem 'mysql2'
 
+gem 'puma'
+
 gem 'ranked-model'
 #Devise user authentication
 gem 'devise'
