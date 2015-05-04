@@ -1,6 +1,6 @@
 CLP - HCI Fall 2015
 ===
-==== Database is postgresql ====
+##### Database is postgresql
 
 To start db:
   rake db:create
