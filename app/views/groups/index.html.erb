@@ -1,0 +1,100 @@
+<% if current_user.admin? %>
+<h1>Groups</h1>
+      <table class="table table-striped">
+        <thead>
+         <tr>
+            <th>Users</th>
+            <th>Assigned Group</th>
+            <th>Group ID</th>
+            <th>Membership ID</th>
+            <th>User ID</th>
+          <tr>
+        
+        <% @groups.each do |group| %>
+        <tr><th bgcolor="#639CA9"><%= group.name %></th>
+          <th bgcolor="#639CA9"></th>
+          <th bgcolor="#639CA9"></th>
+          <th bgcolor="#639CA9"></th>
+          <th bgcolor="#639CA9"></th>
+        </tr>
+         
+        </thead>
+        <body>
+          <% group.users.each do |user| %>
+          <tr>
+            <td><%= user.nickname %></td>
+            <td><%= user.group.name %></td>
+            <td><%= user.group.id %></td>
+            <td><%= user.membership.id %></td>
+            <td><%= user.id %></td>
+             
+          </tr>
+          <% end %>
+        </body>
+    <% end %>
+<% end %>
+
+
+
+
+
+<% if !current_user.admin? %>
+<h1>My Team</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Teammates</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.name %></td>
+        <td><% group.users.each do |user| %>
+            <%= user.nickname %> &nbsp&nbsp&nbsp 
+            
+            <% end %>
+            <% end %>
+        </td>
+      </tr>
+   
+  </tbody>
+</table>
+
+<h2>Editorials</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+     <% @groups.each do |group| %>
+     <%group.users.each do |user| %>
+      <% user.posts.each do |post| %>
+      
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.user_nickname %></td>
+        <td><%= link_to 'Show', post %></td>
+      </tr>
+    <% end %>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+
+
+
+
+

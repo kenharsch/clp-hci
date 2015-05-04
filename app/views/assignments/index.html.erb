@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+    <div style="margin-left:0%">
+<h1>Assignments </h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Draft Due</th>
+      <th>Final Due</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td><%= assignment.title %></td>
+        <td><%= assignment.description %></td>
+        <td><%= assignment.draftDue %></td>
+        <td><%= assignment.finalDue %></td>
+        <td><%= link_to 'Show', assignment %></td>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Assignment', new_assignment_path %>
+</div>
+</div>
+</div>
+
+<br>
+
+

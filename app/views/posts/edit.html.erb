@@ -1,0 +1,11 @@
+<%= if current_user.admin?
+	@header2 = 'Grade Blog Post'
+	else
+	@header2 = 'Edit Blog Post'
+	end %>
+<h1><%= @header2 %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>

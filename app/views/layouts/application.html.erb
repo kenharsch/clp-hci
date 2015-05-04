@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <title>CLP</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>
+  <%= if current_user.nil?
+        @first_entry = ''
+        @second_entry = ''
+        @third_entry = ''
+      elsif current_user.admin?
+        @first_entry = 'Overview'
+        @first_link = '/admin_pg/index'
+        @second_entry = 'Users'
+        @second_link = "/users"
+        @third_entry = 'Assignments'
+        @third_link = "/assignments"
+        @fourth_entry = 'Groups'
+        @fourth_link = "/groups"
+        @fifth_entry = 'Posts'
+        @fifth_link = "/posts"
+        @sixth_entry = 'Evaluations'
+        @sixth_link = "/evaluations"
+        @seventh_entry = 'Wikis'
+        @seventh_link = "/wiki/show"
+        else
+        @first_entry = 'My Blog - Editorials'
+        @first_link = '/posts'
+        @second_entry = 'My Team'
+          if current_user.group.nil?
+            @second_link = '/groups/join'
+          else
+            @second_link = '/groups'
+          end
+
+        @third_entry = 'My Wiki - Book Reviews'
+          if current_user.group.nil?
+            @third_link = "/home/index"
+          elsif current_user.group.id == 1
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp1"
+          elsif current_user.group.id == 2
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp2"
+          elsif current_user.group.id == 3
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp3"
+          elsif current_user.group.id == 4
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp4"
+          elsif current_user.group.id == 5
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp5"
+          elsif current_user.group.id == 6
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp6"
+          elsif current_user.group.id == 7
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp7"
+          elsif current_user.group.id == 8
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp8"
+          elsif current_user.group.id == 9
+            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp9"
+          elsif current_user.group.id == 10
+            @third_link = "http://iceland.cs.brandeis.edu/133gp10"
+          elsif current_user.group.id == 11
+            @third_link = "http://iceland.cs.brandeis.edu/133gp2"
+           elsif current_user.group.id == 12
+            @third_link = "http://iceland.cs.brandeis.edu/133gp3"
+           elsif current_user.group.id == 13
+            @third_link = "http://iceland.cs.brandeis.edu/133gp4"
+           elsif current_user.group.id == 14
+            @third_link = "http://iceland.cs.brandeis.edu/133gp5"
+           elsif current_user.group.id == 15
+            @third_link = "http://iceland.cs.brandeis.edu/133gp6"
+           elsif current_user.group.id == 16
+            @third_link = "http://iceland.cs.brandeis.edu/133gp7"
+           elsif current_user.group.id == 17
+            @third_link = "http://iceland.cs.brandeis.edu/133gp8"
+           elsif current_user.group.id == 18
+            @third_link = "http://iceland.cs.brandeis.edu/133gp9"
+           elsif current_user.group.id == 19
+            @third_link = "http://iceland.cs.brandeis.edu/cs133gp1"
+           elsif current_user.group.id == 20
+            @third_link = "http://iceland.cs.brandeis.edu/cs133gp2"
+          else
+             @third_link = "/home/index"
+          end
+        @fourth_entry = 'My Evaluations'
+        @fourth_link = "/evaluations"
+        @fifth_entry = 'Home'
+        @fifth_link = "/home/index"
+        end%>
+   <link href="assets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/dashboard.css" rel="stylesheet">
+
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+</head>
+<body class='<%controller.controller_name %>'>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" >Internet & Society</a> 
+          <a class="navbar-nickname" >Logged in as: <%= 
+            if current_user.nil?
+              "Not Logged In"
+              else
+                current_user.nickname 
+                end %></a> 
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/home/index">Home</a></li>
+            <li><a href="/users/edit">Profile</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete %>>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+ 	</nav>
+
+
+      
+<body> 
+
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style='position:fixed;'>
+          <ul class="nav nav-sidebar">
+            <li><a href="<%= @first_link %>"><%= @first_entry %></a></li>
+            <li><a href="<%= @second_link %>"><%= @second_entry %></span></a></li>
+            <li><a href="<%= @third_link %>"><%= @third_entry %></a></li>
+            <li><a href="<%= @fourth_link %>"><%= @fourth_entry %></a></li>
+            <li><a href="<%= @fifth_link %>"><%= @fifth_entry %></a></li>
+            <li><a href="<%= @sixth_link %>"><%= @sixth_entry %></a></li>
+             <li><a href="<%= @seventh_link %>"><%= @seventh_entry %></a></li>
+          </ul>
+        </div>
+        
+      </div>
+</div>
+
+<div class="container">
+	<div class="row">
+        <div class="col-md-12">
+      <div style="margin-left:15%">
+
+  <%= yield %>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+<footer>
+</footer>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
+<br>
+<br>
+<br>
+
+</html>

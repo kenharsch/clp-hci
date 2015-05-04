@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @assignment.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @assignment.description %>
+</p>
+
+<p>
+  <strong>Draftdue:</strong>
+  <%= @assignment.draftDue %>
+</p>
+
+<p>
+  <strong>Finaldue:</strong>
+  <%= @assignment.finalDue %>
+</p>
+
+<p>
+  <strong>Togroup:</strong>
+  <%= @assignment.toGroup %>
+</p>
+
+<p>
+  <strong>Isposted:</strong>
+  <%= @assignment.isPosted %>
+</p>
+
+<p>
+  <strong>Togroupon:</strong>
+  <%= @assignment.toGroupOn %>
+</p>
+
+<p>
+  <strong>Postedon:</strong>
+  <%= @assignment.postedOn %>
+</p>
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

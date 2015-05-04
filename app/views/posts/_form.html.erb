@@ -1,0 +1,83 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <% if @post.final == true %>
+          <div style="width: 800px; height: 400px; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+  <%=raw @post.content %>
+  </div>
+
+  <% else %>
+
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 120 %>
+  </div>
+
+  <% end %>
+
+  <% if current_user.admin %>
+    <div class="field">
+      <%= f.label :discussion %><br>
+      <%= f.text_area :discussion, :class => "tinymce", :rows => 20, :cols => 120 %>
+      <br>
+    
+
+   </div>
+  <% end %>
+
+  <% if current_user.admin %>
+      <div class="field">
+         <%= f.label :ta_rank, 'TA Rank' %><br>
+        <%= f.text_field :ta_rank %>
+      </div>
+      <div>
+         <%= f.label :grader %><br>
+        <%= f.text_field :grader %>
+      </div>
+      <% end %>
+  <br>
+  <% if @post.problemID == nil %>
+  <div class="field">
+   <%= f.select :problemID, options_for_select([["No Assignment", '0'], ["Remix", '1'], ["Future Perfect", '2'], ["Here Comes Everybody", '3'], ["Alone Together", '4']]) %>
+  </div>
+  <% else %>
+  <div>
+    <strong>Assignment:</strong>
+    <% if @post.problemID == 0 %>
+    No Assignment
+    <% elsif @post.problemID == 1 %>
+    Remix
+    <% elsif @post.problemID == 2 %>
+    Future Perfect
+    <% elsif @post.problemID == 3 %>
+    Here Comes Everybody
+    <% elsif @post.problemID == 4 %>
+    Alone Together
+    <% end %>
+  </div>  
+  <% end %>
+   <div class="field">
+    <%= f.label "Check box to submit to team on update." %> <br />
+    <%= f.check_box :togroup %> <br />
+</div>
+<br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%= tinymce %>
+<% end %>
