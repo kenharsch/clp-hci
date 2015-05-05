@@ -28,16 +28,19 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
-  background-color: #C6C6C6;
+  background-color: #E0E0E0;
 }
 
 .navbar-brand{
-  font-size: 40px;
+  font-family: Florence, cursive;
+  font-size: 25px;
+  font-style: italic;
   color: #268E00 !important;
 }
 
 .navbar-nickname{
-  color: #eee !important;
+  font-size: 12px;
+  color: #268E00 !important;
 }
 
 .navbar-left{
