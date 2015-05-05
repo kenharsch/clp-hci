@@ -93,7 +93,7 @@
 
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 </head>
-<body class='<%controller.controller_name %>'>
+<body class='<% controller.controller_name %>'>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -105,42 +105,36 @@
                 current_user.nickname 
                 end %></a> 
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/home/index">Home</a></li>
-            <li><a href="/users/edit">Profile</a></li>
-            <li><a href="#">Help</a></li>
-            <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete %>>Logout</a></li>
-          </ul>
-        </div>
       </div>
- 	</nav>
-
-
-      
-<body> 
-
-<div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" style='position:fixed;'>
-          <ul class="nav nav-sidebar">
-            <li><a href="<%= @first_link %>"><%= @first_entry %></a></li>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+             <li><a href="<%= @first_link %>"><%= @first_entry %></a></li>
             <li><a href="<%= @second_link %>"><%= @second_entry %></span></a></li>
             <li><a href="<%= @third_link %>"><%= @third_entry %></a></li>
             <li><a href="<%= @fourth_link %>"><%= @fourth_entry %></a></li>
             <li><a href="<%= @fifth_link %>"><%= @fifth_entry %></a></li>
             <li><a href="<%= @sixth_link %>"><%= @sixth_entry %></a></li>
              <li><a href="<%= @seventh_link %>"><%= @seventh_entry %></a></li>
+           </ul>
+             <ul class="nav navbar-nav navbar-right" style="margin-right:10px">
+            <li><a href="/home/index">Home</a></li>
+            <li><a href="/users/edit">Profile</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete %></a></li>
           </ul>
         </div>
-        
       </div>
-</div>
+ 	</nav>
+      
+<body>
+
+<%= render 'carousel' %>
+
 
 <div class="container">
 	<div class="row">
         <div class="col-md-12">
-      <div style="margin-left:15%">
+      <div style="margin-left:5px">
 
   <%= yield %>
 </div>

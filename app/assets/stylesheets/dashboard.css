@@ -21,15 +21,28 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+
 /*
  * Top navigation
  * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
   border: 0;
-  background-color: #FFF;
+  background-color: #C6C6C6;
 }
 
+.navbar-brand{
+  font-size: 40px;
+  color: #268E00 !important;
+}
+
+.navbar-nickname{
+  color: #eee !important;
+}
+
+.navbar-left{
+   color: #eee !important;
+}
 /*
  * Sidebar
  */
@@ -111,3 +124,14 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.carousel-inner{
+  width:100%;
+  max-height: 200px !important;
+}
+
+
+
+
+
+
