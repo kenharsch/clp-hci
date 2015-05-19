@@ -38,48 +38,8 @@
         @third_entry = 'My Wiki - Book Reviews'
           if current_user.group.nil?
             @third_link = "/home/index"
-          elsif current_user.group.id == 1
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp1"
-          elsif current_user.group.id == 2
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp2"
-          elsif current_user.group.id == 3
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp3"
-          elsif current_user.group.id == 4
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp4"
-          elsif current_user.group.id == 5
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp5"
-          elsif current_user.group.id == 6
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp6"
-          elsif current_user.group.id == 7
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp7"
-          elsif current_user.group.id == 8
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp8"
-          elsif current_user.group.id == 9
-            @third_link = "http://iceland.cs.brandeis.edu/cs133_spring2015_gp9"
-          elsif current_user.group.id == 10
-            @third_link = "http://iceland.cs.brandeis.edu/133gp10"
-          elsif current_user.group.id == 11
-            @third_link = "http://iceland.cs.brandeis.edu/133gp2"
-           elsif current_user.group.id == 12
-            @third_link = "http://iceland.cs.brandeis.edu/133gp3"
-           elsif current_user.group.id == 13
-            @third_link = "http://iceland.cs.brandeis.edu/133gp4"
-           elsif current_user.group.id == 14
-            @third_link = "http://iceland.cs.brandeis.edu/133gp5"
-           elsif current_user.group.id == 15
-            @third_link = "http://iceland.cs.brandeis.edu/133gp6"
-           elsif current_user.group.id == 16
-            @third_link = "http://iceland.cs.brandeis.edu/133gp7"
-           elsif current_user.group.id == 17
-            @third_link = "http://iceland.cs.brandeis.edu/133gp8"
-           elsif current_user.group.id == 18
-            @third_link = "http://iceland.cs.brandeis.edu/133gp9"
-           elsif current_user.group.id == 19
-            @third_link = "http://iceland.cs.brandeis.edu/cs133gp1"
-           elsif current_user.group.id == 20
-            @third_link = "http://iceland.cs.brandeis.edu/cs133gp2"
           else
-             @third_link = "/home/index"
+             @third_link = "/wiki"
           end
         @fourth_entry = 'My Evaluations'
         @fourth_link = "/evaluations"
