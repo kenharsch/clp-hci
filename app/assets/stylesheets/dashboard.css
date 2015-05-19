@@ -42,8 +42,9 @@ body {
 ul.nav a:hover { color: #E3001B !important; }
 
 .navbar-nickname{
-  font-size: 12px;
+  font-size: 14px;
   color: #767E3E !important;
+  float:right;
 }
 
 .nav.navbar-nav.navbar-left li a {

@@ -57,14 +57,18 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" >CS125 - Human Computer Interaction</a> 
-          <a class="navbar-nickname"> Logged in as: <%= 
+          <a class="navbar-brand" >CS125 - Human Computer Interaction</a>   
+        </div>
+        <div>
+          <p class="navbar-nickname"> Logged in as: <%= 
             if current_user.nil?
               "Not Logged In"
-              else
-                current_user.nickname 
-                end %></a> 
+            else
+              current_user.nickname 
+            end %>
+          </p> 
         </div>
+
       </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
