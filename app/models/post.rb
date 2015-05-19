@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
 	has_many :evaluations
 
 	validates :problemID, presence: { :message => "You must choose an assignment tag."}
+	
+
 end
