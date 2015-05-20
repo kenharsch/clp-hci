@@ -1,3 +1,5 @@
+<div style="margin-left:5%">
+
 <%= if current_user.admin?
 	@header2 = 'Grade Blog Post'
 	else
@@ -9,3 +11,5 @@
 
 <%= link_to 'Show', @post %> |
 <%= link_to 'Back', posts_path %>
+
+</div>

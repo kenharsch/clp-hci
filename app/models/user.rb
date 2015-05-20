@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :evaluations
   has_many :visits
   has_many :comments
+  has_many :ahoy_events, class_name: "Ahoy::Event"
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
