@@ -26,7 +26,7 @@
         @seventh_entry = 'Wikis'
         @seventh_link = "/wiki/show"
         else
-        @first_entry = 'My Blog - Editorials'
+        @first_entry = 'My Blog'
         @first_link = '/posts'
         @second_entry = 'My Team'
           if current_user.group.nil?
@@ -35,11 +35,11 @@
             @second_link = '/groups'
           end
 
-        @third_entry = 'My Wiki - Book Reviews'
+        @third_entry = 'My Wiki'
           if current_user.group.nil?
-            @third_link = "/home/index"
+            @third_link = "/wiki/Team-3"
           else
-             @third_link = "/wiki"
+             @third_link = "/wiki/Team-3"
           end
         @fourth_entry = 'My Evaluations'
         @fourth_link = "/evaluations"

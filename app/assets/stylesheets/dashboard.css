@@ -29,31 +29,31 @@ body {
 
 .navbar-fixed-top {
   border: 0;
-  background-color: #CACDB0;
+  background-color: #C8AD69;
 }
 
 .navbar-brand{
   font-family: Arnoldboecklin, fantasy;
   font-size: 25px;
   font-style: italic;
-  color: #767E3E !important;
+  color: #2E4001 !important;
 }
 
 ul.nav a:hover { color: #E3001B !important; }
 
 .navbar-nickname{
   font-size: 14px;
-  color: #767E3E !important;
+  color: #2E4001 !important;
   float:right;
 }
 
 .nav.navbar-nav.navbar-left li a {
   font-size: 15px;
-  color: #2F4E84;
+  color: #1B1604;
 }
 
 .nav.navbar-nav.navbar-right li a {
-  color: #2F4E84;
+  color: #1B1604;
 }
 /*
  * Sidebar

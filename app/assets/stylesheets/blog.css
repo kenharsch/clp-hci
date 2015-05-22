@@ -1,0 +1,11 @@
+.bloggy {
+	background-color: #C4D4CF !important;
+  background-image: url("thompson.png");
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom right;
+  font-family: Arnoldboecklin, fantasy;
+  font-size: 25px;
+  font-style: italic;
+  color: #767E3E !important;
+}
