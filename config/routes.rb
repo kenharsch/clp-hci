@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   resources :wikis
 
-  Precious::App.set(:gollum_path, Rails.root.join('wiki').to_s)
+  gollum_path = File.expand_path(File.dirname(__FILE__))
+  Precious::App.set(:gollum_path, gollum_path)
   Precious::App.set(:default_markup, :markdown) # set your favorite markup language
   Precious::App.set(:wiki_options, {:universal_toc => true})
   Precious::App.set(:wiki_options, {:css => true})
