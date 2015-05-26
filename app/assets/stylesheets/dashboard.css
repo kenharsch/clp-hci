@@ -16,6 +16,10 @@ body {
  * Global add-ons
  */
 
+.hst { /* In Your CSS File */
+   background-image: url('hst.jpg');
+}
+
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
