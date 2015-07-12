@@ -5,11 +5,12 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   pool: 5
   timeout: 5000
-  username: clp
-  password: password
+  username: kenharsch
+  password: 
+  socket: /home/ubuntu/lib/mysql/socket/mysql.sock
 
 development:
   <<: *default
