@@ -1,10 +1,10 @@
 CLP - HCI Fall 2015
 ===
-#### Database is postgresql
+#### Database is mysql
 
-To start pg server:
+To start mysql server:
 
-pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+mysql.server start
 
 To start db:
 
