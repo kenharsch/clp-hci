@@ -2,6 +2,10 @@ CLP - HCI Fall 2015
 ===
 #### Database is postgresql
 
+To start pg server:
+
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
 To start db:
 
   rake db:create
