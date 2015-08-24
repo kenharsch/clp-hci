@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150304142244) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "ahoy_events", id: false, force: true do |t|
     t.uuid     "visit_id"
     t.integer  "user_id"
@@ -89,7 +86,7 @@ ActiveRecord::Schema.define(version: 20150304142244) do
     t.text     "content"
     t.datetime "savedOn"
     t.datetime "toGroupOn"
-    t.float    "grade"
+    t.float    "grade",         limit: 24
     t.string   "grader"
     t.datetime "created_at"
     t.datetime "updated_at"

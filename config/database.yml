@@ -6,11 +6,11 @@
 #
 default: &default
   adapter: mysql2
+  encoding: utf8
   pool: 5
-  timeout: 5000
-  username: kenharsch
-  password: 
-  socket: /home/ubuntu/lib/mysql/socket/mysql.sock
+  username: root
+  password:
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default

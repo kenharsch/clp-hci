@@ -97,6 +97,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :problemID, :content, :savedOn, :toGroupOn, :togroup, :grade, :grader, :prob, :gid, :discussion, :ta_grade, :draft)
+      params.require(:post).permit(:title, :problemID, :content, :savedOn, :toGroupOn, :togroup, :grade, :grader, :prob, :gid, :discussion, :ta_grade, :draft, :user_id, :user_nickname)
     end
 end
