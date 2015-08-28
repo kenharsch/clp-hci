@@ -20,7 +20,6 @@ end
   # GET /posts/1
   # GET /posts/1.json
   def show
-    
     @post = Post.find(params[:id])
     ahoy.track "Visited Post", post_id: @post.id
     respond_to do |format|
