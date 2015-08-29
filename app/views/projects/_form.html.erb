@@ -21,10 +21,12 @@
   </div>
 
 <div>
-  
+
 <% User.order(:name).each do |user| %>
   <%= check_box_tag :user_ids,
-                     user.id%>
+                     user.id,
+                     @project.users.include?(user),
+                     name: 'project[user_ids][]' %>
   <%= user.name %>
   <br>
 <% end %>

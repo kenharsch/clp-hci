@@ -26,8 +26,15 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.save
-    redirect_to projects_path
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to edit_project_path(@project.id), notice: 'Partnership was successfully created.' }
+        format.json { render :show, status: :created, location: @project }
+      else
+        format.html { render :new }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
 
   end
 

@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string 		:image_url
       t.string 		:password
       t.boolean 	:admin
-      t.integer   :project_id
       
       t.timestamps
     end

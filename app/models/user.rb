@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   has_many :evaluations
   has_many :visits
   has_many :comments
-  has_one :project
+  has_one :partnership
+  has_one :project, :through => :partnership
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

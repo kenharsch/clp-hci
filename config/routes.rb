@@ -5,6 +5,8 @@ require 'rubygems'
 Rails.application.routes.draw do
   
   
+  resources :partnerships
+
   resources :attachments
 
   resources :projects
