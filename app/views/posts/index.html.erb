@@ -5,9 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Author</th>
-      <th>Saved On</th>
-      <th>To Group?</th>
-      <th>TA Rank</th>
+      <th>Due</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,9 +24,7 @@
            <% else %>
          <td><%= post.user.nickname %></td>
       <% end %>
-        <td><%= post.created_at %></td>
-        <td><%= post.togroup %></td>
-        <td><%= post.ta_rank %></td>
+        <td><%= post.assignment.due %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to @link_name, edit_post_path(post) %></td>
         
