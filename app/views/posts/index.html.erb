@@ -24,7 +24,7 @@
            <% else %>
          <td><%= post.user.nickname %></td>
       <% end %>
-        <td><%= post.assignment.due %></td>
+        <td><%= post.assignment.due.strftime("%B %d at %I:%M %p") %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to @link_name, edit_post_path(post) %></td>
         

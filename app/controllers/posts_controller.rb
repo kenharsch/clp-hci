@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if current_user.admin?
       @posts = Post.all
     else
-      @posts = Post.where(:user_id=>current_user.id)
+      @posts = Post.where(:user_id=>current_user.id).order(created_at: :desc)
     end
       @assignments = Assignment.all
     respond_to do |format|

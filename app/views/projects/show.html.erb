@@ -6,6 +6,12 @@
   <strong>Title:</strong>
   <%= @project.title %>
 </p>
+<p>
+  <strong>Authors:</strong>
+  <% @project.users.each do |user| %>
+  <%= user.name %>&nbsp&nbsp
+  <% end %>
+</p>
 
 <p>
   <strong>Report:</strong>

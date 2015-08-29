@@ -1,5 +1,5 @@
+<% if current_user.admin? %>
 <h1>Projects</h1>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -27,3 +27,12 @@
 <br>
 
 <%= link_to 'New Project', new_project_path %>
+
+<% elsif @project.nil? %>
+<h1>My Project</h1>
+<h3>You know you haven't started your project, yet.</h3>
+
+<% else controller.redirect_to edit_project_path(@project.id) %>
+
+<% end %>
+

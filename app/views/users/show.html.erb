@@ -21,17 +21,6 @@
   <%= @user.sign_in_count %>
 </p>
 
-<p>
-  <strong>Current Sign In:</strong>
-  <%= @user.current_sign_in_at %>
-</p>
-
-<p>
-  <strong>Last Sign In:</strong>
-  <%= @user.last_sign_in_at %>
-</p>
-
-
 <% end %>
 <p>
   <strong>Nickname:</strong>
@@ -54,8 +43,8 @@
     <tr>
       <th>Title</th>
       <th>Author</th>
-      <th>Saved On</th>
-      <th>To Group On</th>
+      <th>Created</th>
+      <th>Due</th>
       <th>Grade</th>
       <th colspan="3"></th>
     </tr>
@@ -66,78 +55,18 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.user.nickname %></td>
-        <td><%= post.created_at %></td>
-        <td><%= post.toGroupOn %></td>
+        <td><%= post.created_at.strftime("%B %d at %I:%M %p") %></td>
+        <td><%= post.assignment.due.strftime("%B %d at %I:%M %p") %></td>
         <td><%= post.grade %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to @link_name, edit_post_path(post) %></td>
+        <td><%= link_to 'Grade',  edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% if current_user.admin? %>
 
-
-
-  <div>
-  <h3>Evaluations</h3>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Post Title</th>
-      <th>Author</th>
-      <th>Problem</th>
-      <th>Rating 1</th>
-      <th>Rating 2</th>
-      <th>Rating 3</th>
-      <th>Rank</th>
-      <th>TA Rank</th>
-      <th>Show</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @evaluations.each do |evaluation| %>
-      <tr>
-        <td><%= evaluation.post.title %></td>
-        <% if evaluation.post.user.nickname = "Ken" %>
-        <td><%= evaluation.post.title %></td>
-        <% else %>
-        <td><%= evaluation.post.created_at %></td>
-        <% end %>
-
-        <% if evaluation.post.problemID = 0 %>
-        <td>Here Comes Everybody</td>
-         <% elsif evaluation.post.problemID = 1 %>
-        <td>Remix</td>
-         <% elsif evaluation.post.problemID = 2 %>
-        <td>Future Perfect</td>
-         <% elsif evaluation.post.problemID = 3 %>
-        <td>Here Comes Everybody</td>
-         <% elsif evaluation.post.problemID = 4 %>
-        <td>Alone Together</td>
-        <% end %>
-
-        <td><%= evaluation.rating_1 %></td>
-        <td><%= evaluation.rating_2 %></td>
-        <td><%= evaluation.rating_3 %></td>
-        <td><%= evaluation.user_rank %></td>
-        <td><%= evaluation.post.ta_rank %></td>
-        <td><%= link_to 'Show', evaluation %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-<p>
-  <strong>Summary Delta Score:</strong>
-  <%= @delta %>
-</p>
-
-<% end %>
 
 <%= link_to 'Back', users_path %>
 

@@ -17,15 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.cktext_area :description, :ckeditor => {:language => 'en'}  %>
   </div>
   <div class="field">
-    <%= f.label :draftDue %><br>
-    <%= f.datetime_select :draftDue %>
-  </div>
-  <div class="field">
-    <%= f.label :finalDue %><br>
-    <%= f.datetime_select :finalDue %>
+    <%= f.label :due %><br>
+    <%= f.datetime_select :due %>
   </div>
   <div class="actions">
     <%= f.submit %>

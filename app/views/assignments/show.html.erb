@@ -4,41 +4,22 @@
   <strong>Title:</strong>
   <%= @assignment.title %>
 </p>
+<p>
+  <strong>Due:</strong>
+  <%= @assignment.due.strftime("%B %d at %I:%M %p") %></li>
+</p>
 
 <p>
   <strong>Description:</strong>
-  <%= @assignment.description %>
+  <div style="width: 800px; height: 400px; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+  <%= raw @assignment.description %>
+  </div>
 </p>
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> | 
 
-<p>
-  <strong>Draftdue:</strong>
-  <%= @assignment.draftDue %>
-</p>
+<% else %>
 
-<p>
-  <strong>Finaldue:</strong>
-  <%= @assignment.finalDue %>
-</p>
-
-<p>
-  <strong>Togroup:</strong>
-  <%= @assignment.toGroup %>
-</p>
-
-<p>
-  <strong>Isposted:</strong>
-  <%= @assignment.isPosted %>
-</p>
-
-<p>
-  <strong>Togroupon:</strong>
-  <%= @assignment.toGroupOn %>
-</p>
-
-<p>
-  <strong>Postedon:</strong>
-  <%= @assignment.postedOn %>
-</p>
-
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
 <%= link_to 'Back', assignments_path %>
+
+<% end %>

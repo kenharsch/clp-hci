@@ -40,21 +40,24 @@
 
 <% if !current_user.admin? %>
 
-<h1>Class Blogs </h1>
+<h1>Class Blog </h1>
 
 <table class="table">
     <thead>
-        <th>Title</th>
-        <th>Blogger</th>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     </thead>
     
     <tbody>
-       <% @groups.each do |group| %>
-            <%group.users.each do |user| %>
-            <% user.posts.each do |post| %>
+
+            <% @posts.each do |post| %>
         <tr>
-            <td><b><%= post.title %></td>
-            <td><%= post.user_nickname %></td>
+            <td><h3><%= post.title %></h3></td>
+            <td></td>
+            <td><b><%= post.user_nickname %></b></td>
         </tr>
         <tr>
             <td colspan="3">
@@ -66,13 +69,15 @@
         <tr>
                 <% post.comments.each do |comment| %>
                   <td>
-                    <div style="height: 50px; overflow: auto; background-color: #FFFFFF; padding: 5px",  colspan="3">
+                    <div style="height: 50px; width: 900px;  overflow: auto; background-color: #FFFFFF; outline: 2px solid #546593; padding: 5px", class="boxed", colspan="3">
                     <%= comment.body %>
                   </div>
                   </td>
+                  <td></td>
                   <td>
                     <%= comment.commenter %>
                   </td>
+                  <br>
               </tr>
            
                   
@@ -80,28 +85,8 @@
             
                 <tr>
                   <td>
-                <strong>Add a comment:</strong>
-              </td>
-              </tr>
-              <tr>
-                <%= form_for([post, post.comments.build]) do |f| %>
-                  <td>
-                    <div style="height: 50px; overflow: auto; background-color: #FFFFFF;  padding: 5px",  colspan="3">
-                    <%= f.hidden_field :commenter, :value => current_user.nickname %> 
-                    <%= f.text_area :body, cols:100 %>
-                  </div>
-                  </td>
-                
-                    <td>
-                    <%= f.submit %>
-                  </td>
-                  </tr>
-                <% end %>
-
-
-
-        <% end %>
-        <% end %>
+                <strong>To view full screen, or add a comment:</strong>
+                <td><%= button_to 'Go', post_path(post), :method => :get %></td>
         <% end %>
     </tbody>
 </table>

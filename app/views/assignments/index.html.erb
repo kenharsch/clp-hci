@@ -7,9 +7,8 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
-      <th>Draft Due</th>
-      <th>Final Due</th>
+      <th>Due</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -17,17 +16,19 @@
     <% @assignments.each do |assignment| %>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= assignment.title %></td>
-        <td><%= assignment.description %></td>
-        <td><%= assignment.draftDue %></td>
-        <td><%= assignment.finalDue %></td>
+        <td><%= assignment.due.strftime("%B %d at %I:%M %p") %></td>
         <td><%= link_to 'Show', assignment %></td>
+        <% if current_user.admin? %>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<% if current_user.admin? %>
 <%= link_to 'New Assignment', new_assignment_path %>
+<% end %>
 </div>
 </div>
 </div>

@@ -8,9 +8,15 @@ class GroupsController < ApplicationController
       @groups = Group.all
     else
       @user = current_user
-      gid = @user.group.id
-      @groups = Group.where(:id=>gid)
-  
+      @group = @user.group
+      @users = @group.users
+      @posts = Array.new
+      @users.each do |user|
+        user.posts.each do |post|
+        @posts << post
+      end
+    end
+    @posts.sort! { |a,b| b.updated_at <=> a.updated_at }
     end
   end
 
