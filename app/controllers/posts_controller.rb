@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.where(:user_id=>current_user.id)
     end
+      @assignments = Assignment.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -31,6 +32,7 @@ end
   # GET /posts/new
   def new
      @post = Post.new
+     @assignments = Assignment.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -96,6 +98,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :problemID, :content, :savedOn, :toGroupOn, :togroup, :grade, :grader, :prob, :gid, :discussion, :ta_grade, :draft, :user_id, :user_nickname)
+      params.require(:post).permit(:title, :assignment_id, :content, :grade, :grader, :discussion, :user_id, :user_nickname)
     end
 end

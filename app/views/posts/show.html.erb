@@ -8,55 +8,24 @@
 </p>
 
 <p>
-  <strong>Problem ID:</strong>
-  <%= @post.problemID %>
+  <strong>Assignment:</strong>
+  <%= @post.assignment.title %>
 </p>
 
 <p>
   <strong>Post:</strong>
   <div style="width: 800px; height: 400px; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
-  <%=raw @post.content %>
+  <%= raw @post.content %>
   </div>
 </p>
-
-<% if @post.problemID == 3 || @post.problemID == 4%>
-<p>
-  <strong>Discussion:</strong>
-  <div style="width: 800px; height: 400px; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px",class="boxed">
-  <%=raw @post.discussion %>
-  </div>
-</p>
-<% end %>
-
-<% if current_user.admin? %>
-<p>
-  <strong>Saved On:</strong>
-  <%= @post.created_at %>
-</p>
-
-<p>
-  <strong>To Group On:</strong>
-  <%= @post.toGroupOn %>
-</p>
-
-<p>
-  <strong>TA Rank:</strong>
-  <%= @post.ta_rank %>
-</p>
-
-<p>
-  <strong>Grader:</strong>
-  <%= @post.grader %>
-</p>
-<% end %>
 
 <br>
 <strong>Comments:</strong>
 <br>
 <% @post.comments.each do |comment| %>
   <p>
-    <div class="boxed">
-    <%= comment.body %>
+    <div style="width: 800px; height: 50px; overflow: auto; background-color: #FFFFFF; font-size: 12px; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+  <%= raw comment.body %>
   </div>
   </p>
   <p>

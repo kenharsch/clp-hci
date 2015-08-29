@@ -18,4 +18,5 @@
 //= require jquery.turbolinks
 //= require tinymce-jquery
 //= require bootstrap
+//= require ckeditor/init
 //= require_tree .

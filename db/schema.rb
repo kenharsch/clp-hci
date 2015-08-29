@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304142244) do
+ActiveRecord::Schema.define(version: 20150829133649) do
 
   create_table "ahoy_events", id: false, force: true do |t|
     t.uuid     "visit_id"
@@ -28,15 +28,26 @@ ActiveRecord::Schema.define(version: 20150304142244) do
   create_table "assignments", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "draftDue"
-    t.datetime "finalDue"
-    t.boolean  "toGroup"
-    t.boolean  "isPosted"
-    t.datetime "toGroupOn"
-    t.datetime "postedOn"
+    t.datetime "due"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ckeditor_assets", force: true do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "commenter"
@@ -49,22 +60,6 @@ ActiveRecord::Schema.define(version: 20150304142244) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "evaluations", force: true do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.integer  "rating_1"
-    t.integer  "rating_2"
-    t.integer  "rating_3"
-    t.text     "comment_1"
-    t.text     "comment_2"
-    t.text     "comment_3"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "row_order"
-    t.integer  "user_rank"
-    t.boolean  "submitted",  default: false
-  end
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -82,25 +77,15 @@ ActiveRecord::Schema.define(version: 20150304142244) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
-    t.integer  "problemID"
+    t.integer  "assignment_id"
     t.text     "content"
-    t.datetime "savedOn"
-    t.datetime "toGroupOn"
     t.float    "grade",         limit: 24
     t.string   "grader"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "user_name"
     t.string   "user_nickname"
-    t.boolean  "togroup"
-    t.integer  "prob"
-    t.integer  "gid"
-    t.text     "discussion"
-    t.boolean  "wiki"
-    t.integer  "ta_rank"
-    t.text     "draft"
-    t.boolean  "final"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -108,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150304142244) do
     t.string   "nickname"
     t.string   "image_url"
     t.string   "password"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
@@ -120,12 +106,22 @@ ActiveRecord::Schema.define(version: 20150304142244) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.boolean  "admin"
     t.boolean  "optout"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",                     null: false
+    t.integer  "item_id",                       null: false
+    t.string   "event",                         null: false
+    t.string   "whodunnit"
+    t.text     "object",     limit: 2147483647
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
   create_table "visits", id: false, force: true do |t|
     t.uuid     "visitor_id"
