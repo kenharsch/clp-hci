@@ -5,6 +5,10 @@ require 'rubygems'
 Rails.application.routes.draw do
   
   
+  resources :attachments
+
+  resources :projects
+
   mount Ckeditor::Engine => '/ckeditor'
   get 'wiki/show'
 

@@ -12,44 +12,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.where(:user_id=>@user.id)
-    @evaluations = Evaluation.where(:user_id=>@user.id).order('user_rank ASC')
-    
-    ordered = true
-    rank = 1
-    @evaluations.each do |eval|
-      if eval.post.ta_rank.nil?
-        ordered = false
-
-      elsif eval.post.ta_rank - rank < 0
-        ordered = false
-        rank = eval.post.ta_rank
-      else
-        rank = eval.post.ta_rank
-      end
-    end
-    
-    @delta = 0
-
-    if ordered == false
-      delta = 0
-      abs_rank = 1
-      prev_rank = 1
-      @evaluations.each do |evaluation|
-        if evaluation.post.ta_rank.nil?
-          delta += 0
-        elsif evaluation.post.ta_rank == prev_rank 
-          delta += 0
-        elsif evaluation.post.ta_rank == abs_rank
-          delta += 0
-        else
-          delta += (evaluation.post.ta_rank - abs_rank).abs
-        end
-        abs_rank += 1
-        prev_rank = evaluation.post.ta_rank
-      end
-     @delta = delta
-   end
-
   end
 
 
@@ -112,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :nickname, :email, :image_url, :password, :posts, :group_id, :optout)
+      params.require(:user).permit(:name, :nickname, :email, :image_url, :password, :posts, :group_id, :optout, :project_id)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829133649) do
+ActiveRecord::Schema.define(version: 20150829151019) do
 
   create_table "ahoy_events", id: false, force: true do |t|
     t.uuid     "visit_id"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20150829133649) do
     t.datetime "due"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "attachments", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "record_file_name"
+    t.string   "record_content_type"
+    t.integer  "record_file_size"
+    t.datetime "record_updated_at"
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -88,12 +99,20 @@ ActiveRecord::Schema.define(version: 20150829133649) do
     t.datetime "updated_at"
   end
 
+  create_table "projects", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "nickname"
     t.string   "image_url"
     t.string   "password"
     t.boolean  "admin"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
