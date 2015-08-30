@@ -1,6 +1,32 @@
 <body>
  
-<%= render 'toplists' %>
+ <h3>Notifications</h3>
+<div><div style="float: left; width: 45%; height: 500px; overflow: scroll">
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+
+   
+    <% if current_user.admin? %>
+    <tr>
+      <td>
+        <div id="notification_form">
+          <%=render 'notifications/notification_form'%>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </thead>
+  <tbody>
+    <div id="notification">
+      <%= render 'notifications/notification' %>
+    </div>
+  </tbody>
+
+</table>
+</div>
+
+
 
 <br>
 <br>

@@ -5,6 +5,8 @@ require 'rubygems'
 Rails.application.routes.draw do
   
   
+  resources :notifications
+
   resources :post_upvotes
 
   resources :partnerships

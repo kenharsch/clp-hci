@@ -1,0 +1,11 @@
+<% @notifications.each do |notification|%>
+	<%= div_for notification do%>
+		<tr><td>
+		<b><a href= <%= notification.link %>><%= notification.message %></a></b>
+		<p>Posted <%= time_ago_in_words(notification.created_at) %> ago</p>
+		<%if current_user.admin?%>
+			<%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%end%>
+	<%end%>
+</tr></td>
+<%end%>

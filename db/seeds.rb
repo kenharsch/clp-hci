@@ -43,6 +43,14 @@ Post.create(user_id: 13, assignment_id: 1, user_name: 'Thurman Munson', user_nic
 Post.create(user_id: 14, assignment_id: 1, user_name: 'Phil Rizzuto', user_nickname: 'Scooter', title: 'Bunting', content: 'Lorem ipsum dolor sit amet, magna purus sed eleifend nibh imperdiet. Nascetur ante et quis adipiscing libero augue, mollis nec dictum pede, cursus mauris laoreet nam. Id lacinia justo a tellus, ut venenatis phasellus commodo gravida sapien, porta metus nec rutrum maecenas. Nam et sit, vitae vehicula lacus ipsum ac arcu elementum, cras lectus nulla non ut vulputate, vero tristique mauris, sed eu vitae ut vivamus. Praesent nullam sed neque praesent at urna, risus fringilla malesuada egestas. Fermentum ac et, purus amet, nunc felis vehicula sed venenatis incidunt ipsum, ac dictum vitae nostra nulla porta enim, leo risus dictum accumsan elementum.')
 Post.create(user_id: 15, assignment_id: 1, user_name: 'Willie Stargell', user_nickname: 'Pops', title: 'Upper Deck', content: 'Lorem ipsum dolor sit amet, magna purus sed eleifend nibh imperdiet. Nascetur ante et quis adipiscing libero augue, mollis nec dictum pede, cursus mauris laoreet nam. Id lacinia justo a tellus, ut venenatis phasellus commodo gravida sapien, porta metus nec rutrum maecenas. Nam et sit, vitae vehicula lacus ipsum ac arcu elementum, cras lectus nulla non ut vulputate, vero tristique mauris, sed eu vitae ut vivamus. Praesent nullam sed neque praesent at urna, risus fringilla malesuada egestas. Fermentum ac et, purus amet, nunc felis vehicula sed venenatis incidunt ipsum, ac dictum vitae nostra nulla porta enim, leo risus dictum accumsan elementum.')
 
+Notification.create(message: 'Go to class!', user_notified: '0')
+Notification.create(message: 'Notification to G Ruth 1', link: '', user_notified: '3')
+Notification.create(message: 'Notification to G Ruth 2', user_notified: '3')
+Notification.create(message: 'Notification to G Ruth 3', user_notified: '3')
+Notification.create(message: 'Notification to Joe Dimaggio 1', link: '', user_notified: '4')
+Notification.create(message: 'Notification to Joe Dimaggio 2', link: '', user_notified: '4')
+Notification.create(message: 'Notification to Joe Dimaggio 3', link: '', user_notified: '4')
+
 @users = User.where(admin: nil)
 @users.each do |u|
 	@groups = Group.all
