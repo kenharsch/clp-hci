@@ -20,10 +20,10 @@
     </div>
 
     <div class="item">
-      <%= image_tag "blackboard.png" %>
+      <%= image_tag "new.png" %>
       <div class="carousel-caption">
-        <h2 style="color:white"><b>From the TAs</b></h2>
-        <h3 style="color:white"><b>Go to Class!</b></h3>
+        <h1 style="color:white"><b>New Post!</b></h1>
+        <h3 ><b><a style="color:white" href= <%= @newest_link %>><%= @newest.title %></b></h3>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
       <%= image_tag "glasses.png" %>
       <div class="carousel-caption">
         <h2><b>Trending</b></h2>
-        <h3 style="color:blue"><a href= <%= @trending_link %>><%= @trending.title %></a></h3>
+        <h3><a style="color: #767E3E" href= <%= @trending_link %>><%= @trending.title %></a></h3>
       </div>
     </div>
 
