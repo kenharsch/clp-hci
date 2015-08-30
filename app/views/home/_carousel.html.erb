@@ -16,23 +16,22 @@
       <div class="carousel-caption">
         <h2><b>Welcome to COSI 125a</b></h2>
         <h3><b>Human-Computer Interaction</b></h3>
-        <h4><b>Link to Syllabus</b></h4>
       </div>
     </div>
 
     <div class="item">
-      <%= image_tag "thompsonbanner.png" %>
+      <%= image_tag "blackboard.png" %>
       <div class="carousel-caption">
-        <h2><b>Blog</b></h2>
-        <h3><b>Link to Blog</b></h3>
+        <h2 style="color:white"><b>From the TAs</b></h2>
+        <h3 style="color:white"><b>Go to Class!</b></h3>
       </div>
     </div>
 
     <div class="item">
       <%= image_tag "paper.jpg" %>
       <div class="carousel-caption">
-        <h2><b>Assignments</b></h2>
-        <h3><b>Link to Assignments</b></h3>
+        <h2 style="color:black"><b>Current Assignment</b></h2>
+        <h3 style="color:blue"><a href= <%= @assignment_link %>><%= @assignment.title %></a></h3>
       </div>
     </div>
 
@@ -40,7 +39,7 @@
       <%= image_tag "glasses.png" %>
       <div class="carousel-caption">
         <h2><b>Trending</b></h2>
-        <h3><b>Link to Blog</b></h3>
+        <h3 style="color:blue"><a href= <%= @trending_link %>><%= @trending.title %></a></h3>
       </div>
     </div>
 

@@ -50,9 +50,9 @@
 <%= link_to 'Back', posts_path %> |
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <% end %>
-
+<% unless current_user.admin? %>
 <%= link_to 'Back to Class Blog', user_groups_path(current_user.group) %>
-
+<% end %>
 <br>
 <br>
 <br>
