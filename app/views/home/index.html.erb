@@ -26,7 +26,28 @@
 </table>
 </div>
 
+<div><div style="float: right; width: 45%; height: 500px; overflow: scroll">
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+    <tr>
+      <th>Gold Stars</th> 
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @gold_star_posts.each do |post| %>
+    <tr>
+      <td>
+        <h4><a href= <%= '/'+'posts/'+ post.id.to_s %>><%= post.title %></a></h4><br>
+        <p>By: <%= post.user.nickname %></p>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
+</div>
 
 <br>
 <br>

@@ -7,5 +7,11 @@ class HomeController < ApplicationController
   	@trending = @posts.sort_by{|p| p[:updated_at]}.last
   	@trending_link = '/'+'posts/'+ @trending.id.to_s
   	@notifications = Notification.where(user_notified: [0, current_user.id]).order('created_at DESC')
+  	@gold_star_posts = Array.new
+  	@gold_stars = PostUpvote.joins(:user).where(:users => {:admin => true})
+  	@gold_stars.each do |gs|
+  		@gold_star_posts << gs.post
+  	end
+  	@gold_star_posts.sort_by{|t| t[:created_at]}
   end
 end
