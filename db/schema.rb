@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829174646) do
+ActiveRecord::Schema.define(version: 20150830125911) do
 
   create_table "ahoy_events", id: false, force: true do |t|
     t.uuid     "visit_id"
@@ -93,6 +93,13 @@ ActiveRecord::Schema.define(version: 20150829174646) do
     t.datetime "updated_at"
   end
 
+  create_table "post_upvotes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.integer  "assignment_id"
@@ -102,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150829174646) do
     t.integer  "user_id"
     t.string   "user_name"
     t.string   "user_nickname"
+    t.integer  "upvotes",                  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
