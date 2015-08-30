@@ -10,6 +10,8 @@ class PostsController < ApplicationController
       @posts = Post.where(:user_id=>current_user.id).order(created_at: :desc)
     end
       @assignments = Assignment.all
+      @current_assignment = Assignment.where("due >= ?", Time.zone.now).sort_by{|d| d[:due]}.first
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -22,7 +24,9 @@ end
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
     ahoy.track "Visited Post", post_id: @post.id
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
