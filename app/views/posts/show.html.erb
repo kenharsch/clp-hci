@@ -1,54 +1,69 @@
 <link href="assets/blog.css" rel="stylesheet">
 <body id="bloggy">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <h2><%= @post.title %></h2>
-</p>
-
-<p>
-  <%= @post.assignment.title %>
-</p>
-<br>
-<h4>Likes: &nbsp<%= @post.upvotes %></h4>
-<% unless @post.user.id == current_user.id %>
-<div id="likes" align="right">
-  <%if PostUpvote.where(post_id: @post.id, user_id: current_user.id).exists?%>
-  <div> You like this post.</div>
-  <%else%>
-  <%=form_for(PostUpvote.new) do |x|%>
-  <%=x.hidden_field :user_id, value: current_user.id%>
-  <%=x.hidden_field :post_id, value: @post.id%>
-  <%=x.submit "Like"%>
-  <%end%>
-  <%end%>
-</div>
-<% end %>
-
-<p>
-  <div style="width: 1068px; height: auto; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
-  <%= raw @post.content %>
-  </div>
-</p>
-
-<br>
-<strong>Comments:</strong>
-<br>
-<% @post.comments.each do |comment| %>
   <p>
-    <div style="width: 800px; height: 50px; overflow: auto; background-color: #FFFFFF; font-size: 12px; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
-  <%= raw comment.body %>
+    <h2><%= @post.title %></h2>
+  </p>
+
+  <p>
+    <%= @post.assignment.title %>
+  </p>
+  <br>
+  <h4>Likes: &nbsp<%= @post.upvotes %></h4>
+  <% unless @post.user.id == current_user.id %>
+  <div id="likes" align="right">
+    <%if PostUpvote.where(post_id: @post.id, user_id: current_user.id).exists?%>
+    <div> You like this post.</div>
+    <%else%>
+    <%=form_for(PostUpvote.new) do |x|%>
+    <%=x.hidden_field :user_id, value: current_user.id%>
+    <%=x.hidden_field :post_id, value: @post.id%>
+    <%=x.submit "Like"%>
+    <%end%>
+    <%end%>
   </div>
+  <% end %>
+
+  <p>
+    <div style="width: 1068px; height: auto; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+      <%= raw @post.content %>
+    </div>
+  </p>
+
+  <br>
+  <h4>Comments:</h4>
+  <br>
+  <% @post.comments.each do |comment| %>
+  <% unless @post.user.id == current_user.id %>
+  <div id="likes" align="right">
+    Likes: &nbsp<%= comment.upvotes %>
+    <%if CommentUpvote.where(comment_id: comment.id, user_id: current_user.id).exists?%>
+    <div> You like this comment.</div>
+    <%else%>
+    <%=form_for([CommentUpvote.new], remote: true) do |g|%>
+    <%=g.hidden_field :user_id, value: current_user.id%>
+    <%=g.hidden_field :comment_id, value: comment.id%>
+    <%=g.submit "Like"%>
+    <%end%>
+    <%end%>
+  </div>
+  <% end %>
+  <p>
+    <div style="width: 1068px; height: 50px; overflow: auto; background-color: #FFFFFF; font-size: 12px; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+      <%= raw comment.body %>
+    </div>
   </p>
   <p>
     <strong>By:</strong>
     <%= comment.commenter %>
   </p>
-  <br>
-<% end %>
 
-<strong>Add a comment:</strong>
-<%= form_for([@post, @post.comments.build]) do |f| %>
+  <br>
+  <% end %>
+
+  <strong>Add a comment:</strong>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
   <p>
     <%= f.hidden_field :commenter, :value => current_user.nickname %> 
     <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -57,18 +72,25 @@
   <p>
     <%= f.submit %>
   </p>
-<% end %>
- 
- 
+  <% end %>
 
-<% if current_user == @post.user %>
-<%= link_to 'Back', posts_path %> |
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<% end %>
-<% unless current_user.admin? %>
-<%= link_to 'Back to Class Blog', user_groups_path(current_user.group) %>
-<% end %>
-<br>
-<br>
-<br>
+
+
+  <% if current_user == @post.user %>
+  <%= link_to 'Back', posts_path %> |
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <% end %>
+  <% unless current_user.admin? %>
+  <%= link_to 'Back to Class Blog', user_groups_path(current_user.group) %>
+  <% end %>
+  <br>
+  <br>
+  <br>
 </body>
+
+<script>
+  $("#new_comment_upvote").bind("ajax:complete", function(event, xhr, status) {
+    window.location.reload();
+  });
+
+</script>
