@@ -55,6 +55,8 @@ Rails.application.routes.draw do
 
   get 'groups/remove_user'
 
+  get 'projects/history'
+
 
   
   resources :evaluations do

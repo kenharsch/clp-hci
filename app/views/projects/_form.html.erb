@@ -20,6 +20,7 @@
     <%= f.cktext_area :content, :ckeditor => {:language => 'en'}  %>
   </div>
 
+<% if current_user.admin? %>
 <div>
 
 <% User.order(:name).each do |user| %>
@@ -31,12 +32,11 @@
   <br>
 <% end %>
 </div>
-
+<% end %>
 
   <div class="actions">
     <%= f.submit %>
   </div>
-
 
 <% end %>
 
