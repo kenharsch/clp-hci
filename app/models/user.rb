@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   has_many :comments
   has_one :partnership
   has_one :project, :through => :partnership
+  has_one :show_name
+
+  before_save :set_name
+
+  
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -19,4 +24,13 @@ class User < ActiveRecord::Base
 		with:%r{\.(gif|jpg|png)\Z}i,
 		message: 'must be url for GIF, JPG or PNG image.'
 	}
+
+  def set_name
+    if self.show_name.real_name?
+      self.show_name.name = self.user.name
+    else
+      self.show_name.name = self.user.nickname
+    end
+  end
+  
 end

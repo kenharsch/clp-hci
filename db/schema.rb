@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830143052) do
+ActiveRecord::Schema.define(version: 20150830165610) do
 
   create_table "ahoy_events", id: false, force: true do |t|
     t.uuid     "visit_id"
@@ -134,6 +134,14 @@ ActiveRecord::Schema.define(version: 20150830143052) do
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "show_names", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.boolean  "real_name",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
