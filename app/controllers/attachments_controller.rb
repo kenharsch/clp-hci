@@ -28,7 +28,7 @@ class AttachmentsController < ApplicationController
 
     respond_to do |format|
       if @attachment.save
-        format.html { redirect_to project_path(@attachment.project_id), notice: 'Attachment was successfully created.' }
+        format.html { redirect_to edit_project_path(@attachment.project_id), notice: 'Attachment was successfully created.' }
         format.json { render :show, status: :created, location: @attachment }
       else
         format.html { render :new }
