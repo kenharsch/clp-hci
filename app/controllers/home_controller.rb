@@ -13,5 +13,6 @@ class HomeController < ApplicationController
   		@gold_star_posts << gs.post
   	end
   	@gold_star_posts.sort_by{|t| t[:created_at]}
+  	@gold_star_posts.reverse!
   end
 end

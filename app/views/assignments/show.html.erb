@@ -11,7 +11,7 @@
 
 <p>
   <strong>Description:</strong>
-  <div style="width: 800px; height: 400px; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+  <div style="width: 1068px; height: 200px; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
   <%= raw @assignment.description %>
   </div>
 </p>
@@ -20,6 +20,11 @@
 
 <% else %>
 
-<%= link_to 'Back', assignments_path %>
 
+<%= link_to 'Back', assignments_path %>
+<% if @post.nil? %>
+<%= button_to 'Begin Assignment', new_post_path, method: :get %>
+<% else %>
+<%= button_to 'Go to Your Post', edit_post_path, method: :get %>
+<% end %>
 <% end %>

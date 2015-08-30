@@ -37,6 +37,11 @@ end
   def new
      @post = Post.new
      @assignments = Assignment.all
+     if @post.assignment.nil?
+      @assignment = Assignment.where("due >= ?", Time.zone.now).sort_by{|d| d[:due]}.first
+    else
+      @assignment = @post.assignment
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +53,11 @@ end
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    if @post.assignment.nil?
+      @assignment = Assignment.where("due >= ?", Time.zone.now).sort_by{|d| d[:due]}.first
+    else
+      @assignment = @post.assignment
+    end
     ahoy.track "Edited Post", post_id: @post.id
   end
 

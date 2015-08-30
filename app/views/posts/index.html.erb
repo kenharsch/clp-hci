@@ -1,22 +1,6 @@
 <link href="assets/blog.css" rel="stylesheet">
 <body id="bloggy"></body>
 
-<h4>Current Assignment</h4>
-<p>
-  <strong>Title:</strong>
-  <%= @current_assignment.title %>
-</p>
-<p>
-  <strong>Due:</strong>
-  <%= @current_assignment.due.strftime("%B %d at %I:%M %p") %></li>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <div style="width: 1068px; height: 100px; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
-  <%= raw @current_assignment.description %>
-  </div>
-</p>
 <br><br>
 <h4>My Blog Posts</h4>
 <table class="table table-striped">
@@ -46,7 +30,6 @@
         <td><%= post.assignment.due.strftime("%B %d at %I:%M %p") %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to @link_name, edit_post_path(post) %></td>
-        
       </tr>
       
     <% end %>

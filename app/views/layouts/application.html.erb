@@ -26,20 +26,21 @@
     @seventh_entry = 'Home'
     @seventh_link = '/home/index'
   else
-    @first_entry = 'My Blog'
-    @first_link = '/posts'
-    @second_entry = 'Class Blog'
+    @first_entry = 'Home'
+    @first_link  = '/home/index'
+    @second_entry = 'My Blog'
+    @second_link =  '/posts'
+    @third_entry = 'Class Blog'
     if current_user.group.nil?
-      @second_link = '/groups/join'
+      @third_link = '/groups/join'
     else
-      @second_link = '/groups'
+      @third_link = '/groups'
     end
-    @third_entry = 'Assignments'
-    @third_link = "/assignments"
-    @fourth_entry = 'My Project'
-    @fourth_link = "/projects"
-    @fifth_entry = 'Home'
-    @fifth_link = '/home/index'
+    @fourth_entry = 'Assignments'
+    @fourth_link = "/assignments"
+    @fifth_entry = 'My Project'
+    @fifth_link = "/projects"
+    
     end%>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
 
