@@ -25,6 +25,6 @@
 <% if @post.nil? %>
 <%= button_to 'Begin Assignment', new_post_path, method: :get %>
 <% else %>
-<%= button_to 'Go to Your Post', edit_post_path, method: :get %>
+<%= button_to 'Go to Your Post', edit_post_path(@post), method: :get %>
 <% end %>
 <% end %>

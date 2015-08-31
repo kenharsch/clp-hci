@@ -11,7 +11,9 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1.json
   def show
     @assignment = Assignment.find(params[:id])
-    @post = Post.where(user_id: current_user.id).where(assignment_id: @assignment.id)
+    unless Post.where(user_id: current_user.id).where(assignment_id: @assignment.id).count == 0
+      @post = Post.find(Post.where(user_id: current_user.id).where(assignment_id: @assignment.id))
+    end
   end
 
   # GET /assignments/new
