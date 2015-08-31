@@ -74,10 +74,8 @@ class GroupsController < ApplicationController
         end
       end
     end
-
-
     @group.users << @user
-
+    redirect_to groups_path
   end
 
   # PATCH/PUT /groups/1

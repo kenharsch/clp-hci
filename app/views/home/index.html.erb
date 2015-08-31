@@ -36,6 +36,7 @@
   </thead>
 
   <tbody>
+    <% unless @gold_star_posts.nil? %> 
     <% @gold_star_posts.each do |post| %>
     <tr>
       <td>
@@ -44,6 +45,7 @@
       </td>
     </tr>
     <% end %>
+    <%end%>
   </tbody>
 
 </table>

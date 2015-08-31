@@ -31,11 +31,8 @@
     @second_entry = 'My Blog'
     @second_link =  '/posts'
     @third_entry = 'Class Blog'
-    if current_user.group.nil?
-      @third_link = '/groups/join'
-    else
       @third_link = '/groups'
-    end
+
     @fourth_entry = 'Assignments'
     @fourth_link = "/assignments"
     @fifth_entry = 'My Project'
