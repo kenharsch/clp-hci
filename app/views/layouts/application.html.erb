@@ -37,8 +37,12 @@
     @fourth_link = "/assignments"
     @fifth_entry = 'My Project'
     @fifth_link = "/projects"
+    unless current_user.real.nil?
+    @sixth_entry = 'Name'
+    @sixth_link = "/reals/new"
+    end 
     
-    end%>
+    end %>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->

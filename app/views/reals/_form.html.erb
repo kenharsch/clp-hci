@@ -1,0 +1,20 @@
+<%= form_for(@real) do |f| %>
+  <% if @real.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@real.errors.count, "error") %> prohibited this real from being saved:</h2>
+
+      <ul>
+      <% @real.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.hidden_field :real_name, value: true%>
+    <%= f.hidden_field :user_id, value: current_user.id%>
+
+  <div class="actions">
+    <%= f.submit "Switch", data: { confirm: 'Are you sure you want to use your real name?' }%>
+  </div>
+<% end %>

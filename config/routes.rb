@@ -4,6 +4,8 @@ require 'rubygems'
 
 Rails.application.routes.draw do
   
+  resources :reals
+
   get 'projects/history'
   
   resources :comment_upvotes

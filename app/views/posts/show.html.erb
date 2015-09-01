@@ -8,6 +8,13 @@
   <p>
     <%= @post.assignment.title %>
   </p>
+  <p><b>By:</b>&nbsp&nbsp
+    <% if @user.real.nil? %>
+    <%= @post.user.nickname %>
+    <% else %>
+    <%= @post.user.nickname %>
+    <% end %>
+  </p>
   <br>
   <h4>Likes: &nbsp<%= @post.upvotes %></h4>
   <% unless @post.user.id == current_user.id %>
