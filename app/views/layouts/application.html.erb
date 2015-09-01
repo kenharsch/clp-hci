@@ -37,6 +37,10 @@
     @fourth_link = "/assignments"
     @fifth_entry = 'My Project'
     @fifth_link = "/projects"
+    if current_user.real_name.nil?
+      @sixth_entry = 'Name Switch'
+      @sixth_link = "/real_names/new"
+    end
     
     end%>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +61,7 @@
         if current_user.nil?
           "Not Logged In"
         else
-          current_user.nickname 
+          current_user.name 
           end %>
         </p> 
       </div>

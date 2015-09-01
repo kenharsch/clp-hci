@@ -29,9 +29,10 @@ class HomeController < ApplicationController
     end
 
 
-
     @assignment = Assignment.where("due >= ?", Time.zone.now).sort_by{|d| d[:due]}.first
+    unless @assignment.nil?
     @assignment_link = '/'+'assignments/'+ @assignment.id.to_s
+    end
     unless @posts.count == 0
       @newest = @posts.sort_by{|p| p[:updated_at]}.last
       @newest_link = '/'+'posts/'+ @newest.id.to_s

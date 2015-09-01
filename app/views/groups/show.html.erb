@@ -10,7 +10,12 @@
 
   <% @group.users.each do |user| %>
       	<br>
-        <td><%= user.nickname %></td>
+      	 <% if user.real_name.nil?
+                    name = user.nickname
+                  else
+                    name = user.name
+                end %>
+        <td><%= name %></td>
       </tr>
     <% end %>
 

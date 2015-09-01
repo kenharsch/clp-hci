@@ -8,6 +8,12 @@
   <p>
     <%= @post.assignment.title %>
   </p>
+  <p><b>By:</>&nbsp&nbsp</b>
+    <% if @user.real_name.nil? %>
+    <%= @post.user.nickname %>
+    <% else %>
+    <%= @post.user.name %>
+    <% end %></p>
   <br>
   <h4>Likes: &nbsp<%= @post.upvotes %></h4>
   <% unless @post.user.id == current_user.id %>
@@ -53,9 +59,14 @@
       <%= raw comment.body %>
     </div>
   </p>
+   <% if comment.user.real_name.nil?
+                    name = comment.user.nickname
+                  else
+                    name = comment.user.name
+                end %>
   <p>
     <strong>By:</strong>
-    <%= comment.commenter %>
+    <%= name %>
   </p>
 
   <br>

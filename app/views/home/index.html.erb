@@ -41,7 +41,12 @@
     <tr>
       <td>
         <h4><a href= <%= '/'+'posts/'+ post.id.to_s %>><%= post.title %></a></h4><br>
-        <p>By: <%= post.user.nickname %></p>
+         <% if post.user.real_name.nil?
+                    name = post.user.nickname
+                  else
+                    name = post.user.name
+                end %>
+        <p>By: <%= name %></p>
       </td>
     </tr>
     <% end %>

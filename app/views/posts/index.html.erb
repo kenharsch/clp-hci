@@ -25,7 +25,12 @@
         <% if post.user.nil? %>
              <td> None </td>
            <% else %>
-         <td><%= post.user.nickname %></td>
+            <% if post.user.real_name.nil?
+                    name = post.user.nickname
+                  else
+                    name = post.user.name
+                end %>
+         <td><%= name %></td>
       <% end %>
         <td><%= post.assignment.due.strftime("%B %d at %I:%M %p") %></td>
         <td><%= link_to 'Show', post %></td>

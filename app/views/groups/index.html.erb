@@ -59,7 +59,12 @@
         <tr>
             <td><h3><%= post.title %></h3></td>
             <td></td>
-            <td><b><%= post.user_nickname %></b></td>
+            <% if post.user.real_name.nil?
+                    name = post.user.nickname
+                  else
+                    name = post.user.name
+                end %>
+            <td><b><%= name %></b></td>
         </tr>
         <tr>
             <td colspan="3">
@@ -76,8 +81,13 @@
                   </div>
                   </td>
                   <td></td>
+                   <% if comment.user.real_name.nil?
+                    cname = comment.user.nickname
+                  else
+                    cname = comment.user.name
+                end %>
                   <td>
-                    <%= comment.commenter %>
+                    <%= cname %>
                   </td>
                   <br>
               </tr>

@@ -13,7 +13,13 @@ class PostUpvote < ActiveRecord::Base
 	end
 
 	def notify
-		Notification.create(message: self.user.nickname.to_s + ' liked your post.', user_notified: self.post.user_id, link: '/'+'posts/'+self.post_id.to_s)
+		@user = self.user
+		if @user.real_name.nil?
+		name = self.user.nickname.to_s
+		else
+		name = self.user.name.to_s
+		end
+		Notification.create(message: name + ' liked your post.', user_notified: self.post.user_id, link: '/'+'posts/'+self.post_id.to_s)
 	end
 	
 end
