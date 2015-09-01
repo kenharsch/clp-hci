@@ -7,13 +7,14 @@
 
 <p>
   <strong>Users:</strong>
-
-  <% @group.users.each do |user| %>
-      	<br>
-      	 <% if user.real_name.nil?
-                    name = user.nickname
+<% @group.users.each do |user| %>
+        <br>
+<% if @group.user.real_name.nil?
+                    name = @group.user.nickname
+                  elsif @group.user.real_name.created_at < post.created_at
+                    name = @group.user.name
                   else
-                    name = user.name
+                    name = @group.user.nickname
                 end %>
         <td><%= name %></td>
       </tr>

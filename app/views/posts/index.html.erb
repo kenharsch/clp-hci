@@ -25,12 +25,13 @@
         <% if post.user.nil? %>
              <td> None </td>
            <% else %>
-            <% if post.user.real_name.nil?
-                    name = post.user.nickname
-                  else
-                    name = post.user.name
-                end %>
-         <td><%= name %></td>
+           <td><% if !RealName.where(user_id: post.user.id).exists? %>
+           <%=  post.user.nickname %>
+           <% elsif RealName.where(user_id: post.user.id).first.created_at < post.created_at %>
+           <%= post.user.name %>
+           <% else %>
+           <%= post.user.nickname %>
+           <% end %></td>
       <% end %>
         <td><%= post.assignment.due.strftime("%B %d at %I:%M %p") %></td>
         <td><%= link_to 'Show', post %></td>

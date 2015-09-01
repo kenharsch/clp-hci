@@ -9,11 +9,14 @@
     <%= @post.assignment.title %>
   </p>
   <p><b>By:</>&nbsp&nbsp</b>
-    <% if @user.real_name.nil? %>
-    <%= @post.user.nickname %>
+    <% if !RealName.where(user_id: @user.id).exists? %>
+    <%=  @post.user.nickname %>
+    <% elsif RealName.where(user_id: @user.id).first.created_at < @post.created_at %>
+     <%= @post.user.name %>
     <% else %>
-    <%= @post.user.name %>
-    <% end %></p>
+    <%= @post.user.nickname %>
+     <% end %>
+  </p>
   <br>
   <h4>Likes: &nbsp<%= @post.upvotes %></h4>
   <% unless @post.user.id == current_user.id %>
@@ -31,46 +34,32 @@
   <% end %>
 
   <p>
-    <div style="width: 1068px; height: auto; overflow: auto; background-color: #FFFFFF; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+    <div style="width: 1068px; height: auto; overflow: auto; background-color: #C5D4CF; outline: 2px solid #546593; padding: 5px", class="boxed">
       <%= raw @post.content %>
     </div>
   </p>
 
-  <br>
   <h4>Comments:</h4>
-  <br>
   <% @post.comments.each do |comment| %>
-  <% unless @post.user.id == current_user.id %>
-  <div id="likes" align="right">
-    Likes: &nbsp<%= comment.upvotes %>
-    <%if CommentUpvote.where(comment_id: comment.id, user_id: current_user.id).exists?%>
-    <div> You like this comment.</div>
-    <%else%>
-    <%=form_for([CommentUpvote.new], remote: true) do |g|%>
-    <%=g.hidden_field :user_id, value: current_user.id%>
-    <%=g.hidden_field :comment_id, value: comment.id%>
-    <%=g.submit "Like"%>
-    <%end%>
-    <%end%>
-  </div>
-  <% end %>
   <p>
-    <div style="width: 1068px; height: 50px; overflow: auto; background-color: #FFFFFF; font-size: 12px; outline: 2px solid #A05E1D; padding: 5px", class="boxed">
+    <div style="width: 900px; height: 50px; overflow: auto; background-color: #C5D4CF; font-size: 12px; outline: 2px solid #546593; padding: 5px", class="boxed">
       <%= raw comment.body %>
     </div>
   </p>
-   <% if comment.user.real_name.nil?
-                    name = comment.user.nickname
-                  else
-                    name = comment.user.name
-                end %>
+
   <p>
     <strong>By:</strong>
-    <%= name %>
-  </p>
+    <% if !RealName.where(user_id: comment.user.id).exists? %>
+    <%=  comment.user.nickname %>
+    <% elsif RealName.where(user_id: comment.user.id).first.created_at < comment.created_at %>
+     <%= comment.user.name %>
+    <% else %>
+    <%= comment.user.nickname %>
+     <% end %>
 
   <br>
   <% end %>
+  <br>
 
   <strong>Add a comment:</strong>
   <%= form_for([@post, @post.comments.build]) do |f| %>

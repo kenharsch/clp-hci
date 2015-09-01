@@ -43,7 +43,7 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       if @notification.update(notification_params)
         format.html { redirect_to root_path, notice: 'Notification was successfully updated.' }
-        format.json { render :show, status: :ok, location: @notification }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @notification.errors, status: :unprocessable_entity }
