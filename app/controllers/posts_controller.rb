@@ -24,6 +24,7 @@ end
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @user = User.find(@post.user.id)
     unless @post.user.id == current_user.id
     ahoy.track "Visited Post", post_id: @post.id
     end
@@ -37,12 +38,11 @@ end
   def new
      @post = Post.new
      @assignments = Assignment.all
-     if @post.assignment.nil?
+    if @post.assignment.nil?
       @assignment = Assignment.where("due >= ?", Time.zone.now).sort_by{|d| d[:due]}.first
     else
       @assignment = @post.assignment
     end
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -68,6 +68,11 @@ end
     @post.user_id = current_user.id
     @post.user_name = current_user.name 
     @post.user_nickname = current_user.nickname 
+    if @post.assignment.nil?
+      @assignment = Assignment.where("due >= ?", Time.zone.now).sort_by{|d| d[:due]}.first
+    else
+      @assignment = @post.assignment
+    end
 
     respond_to do |format|
       if @post.save

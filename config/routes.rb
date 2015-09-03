@@ -4,6 +4,9 @@ require 'rubygems'
 
 Rails.application.routes.draw do
   
+  resources :real_names
+
+  get 'projects/history'
   
   resources :comment_upvotes
 
@@ -55,7 +58,7 @@ Rails.application.routes.draw do
 
   get 'groups/remove_user'
 
-  get 'projects/history'
+  
 
 
   

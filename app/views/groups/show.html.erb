@@ -7,10 +7,14 @@
 
 <p>
   <strong>Users:</strong>
-
-  <% @group.users.each do |user| %>
-      	<br>
-        <td><%= user.nickname %></td>
+<% @group.users.each do |user| %>
+        <br>
+       <% if !RealName.where(user_id: @group.user.id).exists?
+      name = @group.user.nickname
+    else
+      name = @group.user.name
+    end %>
+        <td><%= name %></td>
       </tr>
     <% end %>
 

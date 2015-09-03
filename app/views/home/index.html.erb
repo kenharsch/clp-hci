@@ -41,7 +41,15 @@
     <tr>
       <td>
         <h4><a href= <%= '/'+'posts/'+ post.id.to_s %>><%= post.title %></a></h4><br>
-        <p>By: <%= post.user.nickname %></p>
+         <p>By: 
+        <% if !RealName.where(user_id: post.user.id).exists? %>
+              <%=  post.user.nickname %>
+              <% elsif RealName.where(user_id: post.user.id).first.created_at < post.created_at %>
+              <%= post.user.name %>
+              <% else %>
+              <%= post.user.nickname %>
+              <% end %>
+            </p>
       </td>
     </tr>
     <% end %>

@@ -29,16 +29,19 @@ class HomeController < ApplicationController
     end
 
 
-
     @assignment = Assignment.where("due >= ?", Time.zone.now).sort_by{|d| d[:due]}.first
+    unless @assignment.nil?
     @assignment_link = '/'+'assignments/'+ @assignment.id.to_s
+    end
     unless @posts.count == 0
-      @newest = @posts.sort_by{|p| p[:updated_at]}.last
+      @newest = @posts.sort_by{|p| p[:created_at]}.last
       @newest_link = '/'+'posts/'+ @newest.id.to_s
 
-      @new_comment = @comments.sort_by{|p| p[:updated_at]}.last
-      if @new_comment.nil?
-        @trending = Post.first
+      @new_comment = @comments.sort_by{|p| p[:created_at]}.last
+      if @new_comment.post.nil?
+        @trending = Post.order("RAND()").first
+      elsif @new_comment.nil?
+        @trending = Post.order("RAND()").first
       else
         @trending = @new_comment.post
       end

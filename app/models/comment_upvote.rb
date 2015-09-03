@@ -12,6 +12,11 @@ class CommentUpvote < ActiveRecord::Base
 	end
 
 	def notify
-		Notification.create(message: self.user.nickname.to_s + ' liked your comment.', user_notified: self.comment.user_id, link: '/'+'posts/'+self.comment.post.id.to_s)
+		if !RealName.where(user_id: self.user.id).exists?
+			name = self.user.nickname.to_s
+		else
+			name = self.user.name.to_s
+		end
+		Notification.create(message: name + ' liked your comment.', user_notified: self.comment.user_id, link: '/'+'posts/'+self.comment.post.id.to_s)
 	end
 end
